@@ -22,8 +22,8 @@ This module is responsible for detecting and prioritizing hotspots where multipl
   - 🔴 **Critical Condition**
 - The model is trained using deep learning (CNN-based) to assess visible injuries and overall health.
 
-### 🏡 RAG-Based QnA Bot:
+### 🏡 RAG-Based QnA Bot regarding Adoption form:
 - **LangChain** (Retrieval-Augmented Generation framework)
 - **OpenAI / Hugging Face Models** (For NLP-based QnA)
-- **Vector Database (FAISS / Pinecone)** (Stores FAQs for adoption assistance)
+- **Vector Database (ChromaDB)** (Stores FAQs for adoption assistance)
 ---
