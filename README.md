@@ -19,7 +19,6 @@ This module is responsible for detecting and prioritizing hotspots where multipl
   - 🟢 **Healthy**
   - 🟡 **Moderately Injured/Sick**
   - 🔴 **Critical Condition**
-- The model is trained using deep learning (CNN-based) to assess visible injuries and overall health.
 
 ### 🏡 RAG-Based QnA Bot regarding Adoption form:
 - **LangChain** (Retrieval-Augmented Generation framework)
