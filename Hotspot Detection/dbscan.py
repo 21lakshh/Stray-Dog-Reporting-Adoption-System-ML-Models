@@ -82,7 +82,7 @@ def weighted_distance(A, B):
     lat1, lon1, w1 = A
     lat2, lon2, w2 = B
     euclidean_dist = np.linalg.norm([lat1 - lat2, lon1 - lon2])
-    return euclidean_dist / (1 + np.sqrt(w1 * w2))  # Distance adjusted for severity & recency
+    return euclidean_dist / (1 + np.sqrt(w1 * w2))  
 
 # Apply DBSCAN
 coords_weights = df[["Latitude", "Longitude", "Weight"]].values
@@ -90,6 +90,7 @@ dbscan = DBSCAN(eps=0.01, min_samples=2, metric=weighted_distance)
 df["Cluster"] = dbscan.fit_predict(coords_weights)
 
 # Prioritize clusters based on severity & density
+# Clusters that were outliers were balanced by adding additional weight so that single healthy dog wouldn't be given same priority as single emergency outlier 
 cluster_priority = df.groupby("Cluster")["Weight"].sum().reset_index()
 cluster_priority.columns = ["Cluster", "Priority"]
 df = df.merge(cluster_priority, on="Cluster", how="left")
@@ -97,7 +98,7 @@ df["Priority"] = df.apply(lambda row: row["Priority"] * 0.25 if row["Cluster"] =
 df["Priority"] = df.apply(lambda row: row["Priority"] * 0.3 if row["Cluster"] == -1 and row["Severity"] == 2.5 else row["Priority"], axis=1)
 
 
-# **🗺️ Visualization - Folium Map**
+#  Visualization - Folium Map
 map_center = [df["Latitude"].mean(), df["Longitude"].mean()]
 m = folium.Map(location=map_center, zoom_start=15)
 
