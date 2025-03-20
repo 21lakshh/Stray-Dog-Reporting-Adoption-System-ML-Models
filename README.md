@@ -17,8 +17,7 @@ This module is responsible for detecting and prioritizing hotspots where multipl
 - AI model verifies whether an uploaded image contains a dog.
 - If a dog is detected, its condition is classified into one of four categories:
   - 🟢 **Healthy**
-  - 🟡 **Mildly Injured/Sick**
-  - 🟠 **Moderately Injured/Sick**
+  - 🟡 **Moderately Injured/Sick**
   - 🔴 **Critical Condition**
 - The model is trained using deep learning (CNN-based) to assess visible injuries and overall health.
 
